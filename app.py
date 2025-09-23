@@ -17,21 +17,23 @@ st.markdown("""
 st.title("🚗 Bem-vindo à AutoSeguro")
 st.markdown('<h3 style="color:green;">Sua jornada começa aqui!</h3>', unsafe_allow_html=True)
 st.write("Alugue o carro ideal com conforto, segurança e liberdade para ir além.")
-st.markdown("🚗🚗🚗")
+st.markdown("Essas são nossas opções no momento... 🚗🚗🚗")
 
 # 📸 Galeria de veículos
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 col1.image("Volkswagen Gol.png", caption="Volkswagen Gol")
 col2.image("Jeep Renegade.png", caption="Jeep Renegade")
 col3.image("Chevrolet Onix.png", caption="Chevrolet Onix")
-
+col4.image("Hyundai Hb20.png", caption="Hyundai Hb20")
 # 💬 Depoimento
 st.markdown("💬 *“Aluguei o Onix e foi uma experiência incrível!”* – João, SP")
+st.markdown("💬 *“Aluguei o Renegade para um fim de semana e foi ótimo. Carro confortável, atendimento rápido e sem burocracia. Recomendo!”* – Carla M., BH")
+st.markdown("💬 *“O atendimento foi excelente e o carro estava impecável. Fiz minha viagem tranquilo e com segurança.”* — Rafael T., Campinas")
 
 # 📞 Contato na barra lateral
 st.sidebar.image("AutoSeguro.png")
 st.sidebar.title("📱 Fale Conosco")
-st.sidebar.markdown('[WhatsApp](https://wa.me/5511999999999)')
+st.sidebar.markdown('[WhatsApp](https://wa.me/5511998993067)')
 
 # 🚘 Escolha de veículo
 carros = {
@@ -56,7 +58,7 @@ diaria = carros[opcao]
 st.header("📋 Detalhes do Aluguel")
 st.image(f"{opcao}.png")
 st.subheader(f"Modelo selecionado: {opcao}")
-st.markdown("🚗🚗🚗")
+st.markdown("Atenção ⚠️ — Após ler a descrição, preencha o tempo de aluguel e os Km's para obter o valor final.")
 
 # 📌 Descrição condicional
 if opcao in descricoes:
