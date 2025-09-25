@@ -1,8 +1,3 @@
-Claro! Vou organizar e corrigir o seu código Streamlit para aluguel de carros, garantindo que a parte do Admin funcione, removendo duplicações e deixando o código limpo e funcional.
-
-Segue o código completo corrigido e organizado:
-
-```python
 import streamlit as st
 import sqlite3
 import bcrypt
@@ -238,3 +233,4 @@ else:
 
     # ---------- PROMOÇÕES
 ```
+
