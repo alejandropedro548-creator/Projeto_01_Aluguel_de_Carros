@@ -231,6 +231,6 @@ else:
         else:
             st.info("Nenhuma reserva encontrada.")
 
-    # ---------- PROMOÇÕES
-```
+    # ---------- PROMOÇÕES ----------
+
 
