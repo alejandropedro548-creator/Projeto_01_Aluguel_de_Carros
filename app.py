@@ -1,3 +1,8 @@
+Claro! Vou organizar e corrigir o seu código Streamlit para aluguel de carros, garantindo que a parte do Admin funcione, removendo duplicações e deixando o código limpo e funcional.
+
+Segue o código completo corrigido e organizado:
+
+```python
 import streamlit as st
 import sqlite3
 import bcrypt
@@ -69,7 +74,7 @@ def cadastrar_carro(marca, modelo, diaria, descricao, imagem):
     conn = sqlite3.connect("aluguel.db")
     c = conn.cursor()
     c.execute("INSERT INTO carros (marca, modelo, diaria, descricao, imagem) VALUES (?, ?, ?, ?, ?)",
-              (marca, modelo, diaria, descricao, imagem))
+              (marca.capitalize(), modelo.capitalize(), diaria, descricao, imagem))
     conn.commit()
     conn.close()
 
@@ -114,6 +119,20 @@ def listar_todas_reservas():
     reservas = c.fetchall()
     conn.close()
     return reservas
+
+def deletar_carro(carro_id):
+    conn = sqlite3.connect("aluguel.db")
+    c = conn.cursor()
+    c.execute("DELETE FROM carros WHERE id=?", (carro_id,))
+    conn.commit()
+    conn.close()
+
+def deletar_reserva(reserva_id):
+    conn = sqlite3.connect("aluguel.db")
+    c = conn.cursor()
+    c.execute("DELETE FROM reservas WHERE id=?", (reserva_id,))
+    conn.commit()
+    conn.close()
 
 # ----------------- ESTADO -----------------
 if "usuario" not in st.session_state:
@@ -183,8 +202,9 @@ else:
         if not carros:
             st.warning("Nenhum carro disponível no momento.")
         else:
-            carro_selec = st.selectbox("Selecione um carro", [f"{c[1]} {c[2]}" for c in carros])
-            idx = [f"{c[1]} {c[2]}" for c in carros].index(carro_selec)
+            nomes_carros = [f"{c[1]} {c[2]}" for c in carros]
+            carro_selec = st.selectbox("Selecione um carro", nomes_carros)
+            idx = nomes_carros.index(carro_selec)
             carro_id, marca, modelo, diaria, descricao, imagem = carros[idx]
 
             st.image(imagem, use_column_width=True)
@@ -216,8 +236,5 @@ else:
         else:
             st.info("Nenhuma reserva encontrada.")
 
-    # ---------- PROMOÇÕES ----------
-    elif pagina == "Promoções":
-        st.title("🔥 Promoções")
-        st.markdown("🎁 Aproveite descontos especiais e condições VIP!")
-        st.markdown("- Ester: aluguel grátis em qualquer carro 🚗
+    # ---------- PROMOÇÕES
+```
