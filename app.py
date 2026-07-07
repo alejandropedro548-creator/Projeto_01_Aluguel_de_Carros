@@ -184,16 +184,127 @@ st.markdown(
 )
 
 # 📸 Galeria de veículos
-col1, col2, col3, col4 = st.columns(4)
-col1.image("Volkswagen Gol.png", caption="Volkswagen Gol")
-col2.image("Jeep Renegade.png", caption="Jeep Renegade")
-col3.image("Chevrolet Onix.png", caption="Chevrolet Onix")
-col4.image("Hyundai Hb20.png", caption="Hyundai Hb20")
+st.markdown("## 🚘 Nossa Frota")
+
+col1, col2 = st.columns(2)
+
+with col1:
+
+    st.image("Volkswagen Gol.png")
+
+    st.markdown("""
+### Volkswagen Gol
+
+⭐⭐⭐⭐⭐
+
+💰 **R$ 79 / dia**
+
+✔ Econômico
+
+✔ Ar-condicionado
+
+✔ Ideal para cidade
+
+✔ Excelente consumo
+""")
+
+    st.divider()
+
+    st.image("Chevrolet Onix.png")
+
+    st.markdown("""
+### Chevrolet Onix
+
+⭐⭐⭐⭐⭐
+
+💰 **R$ 90 / dia**
+
+✔ Central multimídia
+
+✔ Econômico
+
+✔ Excelente desempenho
+
+✔ Muito confortável
+""")
+
+with col2:
+
+    st.image("Jeep Renegade.png")
+
+    st.markdown("""
+### Jeep Renegade
+
+⭐⭐⭐⭐⭐
+
+💰 **R$ 80 / dia**
+
+✔ SUV
+
+✔ Espaçoso
+
+✔ Excelente estabilidade
+
+✔ Ideal para viagens
+""")
+
+    st.divider()
+
+    st.image("Hyundai Hb20.png")
+
+    st.markdown("""
+### Hyundai HB20
+
+⭐⭐⭐⭐⭐
+
+💰 **R$ 94 / dia**
+
+✔ Conectividade
+
+✔ Direção elétrica
+
+✔ Econômico
+
+✔ Confortável
+""")
 
 # 💬 Depoimentos
-st.markdown("💬 “Aluguei o Onix e foi uma experiência incrível!” – João, SP")
-st.markdown("💬 “Aluguei o Renegade para um fim de semana e foi ótimo. Carro confortável, atendimento rápido e sem burocracia. Recomendo!” – Carla M., BH")
-st.markdown("💬 “O atendimento foi excelente e o carro estava impecável. Fiz minha viagem tranquilo e com segurança.” — Rafael T., Campinas")
+st.markdown("---")
+
+st.header("⭐ O que nossos clientes dizem")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.success("""
+⭐⭐⭐⭐⭐
+
+"O carro estava impecável.
+
+Processo muito rápido."
+
+**João — São Paulo**
+""")
+
+with col2:
+    st.success("""
+⭐⭐⭐⭐⭐
+
+"Excelente atendimento.
+
+Voltarei a alugar."
+
+**Carla — Belo Horizonte**
+""")
+
+with col3:
+    st.success("""
+⭐⭐⭐⭐⭐
+
+"Melhor experiência que já tive."
+
+**Rafael — Campinas**
+""")
 
 # Dados dos carros organizados por marca
 marcas = {
