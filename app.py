@@ -1,99 +1,69 @@
 import streamlit as st
 import time
 
-# 🎨 Estilo de fundo
+# ===========================
+# CONFIGURAÇÃO DA PÁGINA
+# ===========================
+
+st.set_page_config(
+    page_title="AutoSeguro",
+    page_icon="🚗",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# ===========================
+# CSS PREMIUM
+# ===========================
+
 st.markdown("""
 <style>
 
-/* Fundo da aplicação */
-.stApp{
-    background:
-        linear-gradient(rgba(10,20,25,0.82), rgba(10,20,25,0.82)),
-        url("https://images.unsplash.com/photo-1605559424843-8f9b8e7c7e4f");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-/* Fonte */
 html, body, [class*="css"]{
     font-family: "Segoe UI", sans-serif;
 }
 
-/* Títulos */
-h1{
-    color:#FFFFFF;
-    font-size:48px;
-    font-weight:800;
-}
-
-h2{
-    color:white;
-}
-
-h3{
-    color:#18C964;
-}
-
-/* Texto */
-p{
-    color:#F2F2F2;
-    font-size:17px;
-}
-
-/* Botões */
-.stButton>button{
-
-    width:100%;
-    border-radius:12px;
-
-    background:#00B050;
-
-    color:white;
-
-    border:none;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    padding:12px;
-
-    transition:0.3s;
-}
-
-.stButton>button:hover{
-
-    background:#009944;
-
-    transform:scale(1.03);
-
-    box-shadow:0px 8px 20px rgba(0,176,80,.35);
-
-}
-
-/* Inputs */
-
-.stNumberInput,
-.stSelectbox{
-
-    background:white;
-
-    border-radius:10px;
-
+.stApp{
+    background:
+        linear-gradient(rgba(8,15,20,.84), rgba(8,15,20,.84)),
+        url("https://images.unsplash.com/photo-1605559424843-8f9b8e7c7e4f");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
 }
 
 /* Sidebar */
 
 section[data-testid="stSidebar"]{
-
-    background:#0D1117;
-
+    background:#0d1117;
+    border-right:1px solid rgba(255,255,255,.10);
 }
 
-section[data-testid="stSidebar"] *{
+/* Botões */
+
+.stButton>button{
+
+    width:100%;
+    background:linear-gradient(90deg,#00B050,#00C853);
 
     color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.stButton>button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(0,176,80,.35);
 
 }
 
@@ -105,107 +75,153 @@ img{
 
 }
 
+/* Métricas */
+
+div[data-testid="metric-container"]{
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:15px;
+
+    padding:15px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
 /* Alertas */
 
 div[data-baseweb="notification"]{
 
-    border-radius:15px;
+    border-radius:14px;
 
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# 🏠 Cabeçalho
-st.title("🚗 Bem-vindo à AutoSeguro")
-st.markdown("""
-<div style="background:rgba(255,255,255,0.08);
-padding:45px;
-border-radius:22px;
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,.15);
-margin-bottom:35px;">
+# ===========================
+# HERO SECTION
+# ===========================
 
-<h1 style="font-size:55px;color:white;margin-bottom:10px;">
+st.markdown("""
+
+<div style="
+
+background:rgba(255,255,255,.08);
+
+padding:45px;
+
+border-radius:22px;
+
+border:1px solid rgba(255,255,255,.15);
+
+backdrop-filter:blur(12px);
+
+">
+
+<h1 style="color:white;font-size:56px;">
+
 🚗 AutoSeguro
+
 </h1>
 
-<h3 style="color:#37D67A;">
-Alugue o carro ideal para qualquer destino.
+<h3 style="color:#38d97a;">
+
+A maneira mais fácil de alugar seu próximo carro.
+
 </h3>
 
-<p style="font-size:20px;color:white;line-height:1.8;">
+<p style="font-size:19px;color:white;line-height:1.8;">
 
-Viaje com conforto, segurança e total liberdade.
-Nossa frota é revisada constantemente para oferecer a melhor experiência em aluguel de veículos.
+Encontre veículos revisados, atendimento especializado e preços competitivos para viagens, trabalho ou lazer.
 
 </p>
 
 </div>
+
 """, unsafe_allow_html=True)
-col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(
-    "🚘 Veículos",
-    "120+"
-)
+# ===========================
+# MÉTRICAS
+# ===========================
 
-col2.metric(
-    "😊 Clientes",
-    "2.500+"
-)
+c1,c2,c3,c4=st.columns(4)
 
-col3.metric(
-    "⭐ Avaliação",
-    "4.9/5"
-)
+with c1:
+    st.metric("🚘 Veículos","120+")
 
-col4.metric(
-    "🛡 Seguro",
-    "Incluso"
-) 
+with c2:
+    st.metric("😊 Clientes","2.500+")
+
+with c3:
+    st.metric("⭐ Avaliação","4.9")
+
+with c4:
+    st.metric("🛡 Seguro","Incluso")
 
 st.markdown("---")
 
-st.markdown(
-"""
-### Por que escolher a AutoSeguro?
+# ===========================
+# BENEFÍCIOS
+# ===========================
 
-✅ Atendimento 24 horas
+b1,b2,b3,b4=st.columns(4)
 
-✅ Veículos revisados
+with b1:
+    st.success("✅ Atendimento 24h")
 
-✅ Reserva rápida
+with b2:
+    st.success("🛡 Seguro incluso")
 
-✅ Seguro incluso
+with b3:
+    st.success("🚘 Frota revisada")
 
-✅ Atendimento sem burocracia
-"""
-)
+with b4:
+    st.success("⚡ Reserva rápida")
 
-# 📸 Galeria de veículos
-st.markdown("## 🚘 Nossa Frota")
+st.markdown("---")
 
-col1, col2 = st.columns(2)
+# ===========================
+# NOSSA FROTA
+# ===========================
+
+st.markdown("""
+<h2 style='text-align:center;color:white;'>
+
+Nossa Frota
+
+</h2>
+
+<p style='text-align:center;'>
+
+Escolha o veículo ideal para sua viagem.
+
+</p>
+
+""", unsafe_allow_html=True)
+
+col1,col2=st.columns(2)
 
 with col1:
 
     st.image("Volkswagen Gol.png")
 
     st.markdown("""
-### Volkswagen Gol
+### 🚗 Volkswagen Gol
 
 ⭐⭐⭐⭐⭐
 
-💰 **R$ 79 / dia**
+💰 **R$79 / dia**
+
+✔ Manual
 
 ✔ Econômico
 
-✔ Ar-condicionado
+✔ Flex
 
-✔ Ideal para cidade
+✔ 5 Lugares
 
-✔ Excelente consumo
 """)
 
     st.divider()
@@ -213,19 +229,20 @@ with col1:
     st.image("Chevrolet Onix.png")
 
     st.markdown("""
-### Chevrolet Onix
+### 🚘 Chevrolet Onix
 
 ⭐⭐⭐⭐⭐
 
-💰 **R$ 90 / dia**
+💰 **R$90 / dia**
 
-✔ Central multimídia
+✔ Central Multimídia
+
+✔ Flex
+
+✔ Muito confortável
 
 ✔ Econômico
 
-✔ Excelente desempenho
-
-✔ Muito confortável
 """)
 
 with col2:
@@ -233,19 +250,20 @@ with col2:
     st.image("Jeep Renegade.png")
 
     st.markdown("""
-### Jeep Renegade
+### 🚙 Jeep Renegade
 
 ⭐⭐⭐⭐⭐
 
-💰 **R$ 80 / dia**
+💰 **R$80 / dia**
 
 ✔ SUV
 
+✔ Automático
+
 ✔ Espaçoso
 
-✔ Excelente estabilidade
-
 ✔ Ideal para viagens
+
 """)
 
     st.divider()
@@ -253,60 +271,41 @@ with col2:
     st.image("Hyundai Hb20.png")
 
     st.markdown("""
-### Hyundai HB20
+### 🚗 Hyundai HB20
 
 ⭐⭐⭐⭐⭐
 
-💰 **R$ 94 / dia**
-
-✔ Conectividade
+💰 **R$94 / dia**
 
 ✔ Direção elétrica
 
+✔ Flex
+
 ✔ Econômico
 
-✔ Confortável
+✔ Conectividade
+
 """)
 
-# 💬 Depoimentos
 st.markdown("---")
 
 st.header("⭐ O que nossos clientes dizem")
 
-col1, col2, col3 = st.columns(3)
+d1,d2,d3=st.columns(3)
 
-with col1:
-    st.success("""
-⭐⭐⭐⭐⭐
+with d1:
+    st.success("⭐⭐⭐⭐⭐\n\nExcelente atendimento.\n\n**João - SP**")
 
-"O carro estava impecável.
+with d2:
+    st.success("⭐⭐⭐⭐⭐\n\nReserva muito rápida.\n\n**Carla - BH**")
 
-Processo muito rápido."
+with d3:
+    st.success("⭐⭐⭐⭐⭐\n\nVoltarei a alugar.\n\n**Rafael - Campinas**")
 
-**João — São Paulo**
-""")
+# ===========================
+# DADOS DOS VEÍCULOS
+# ===========================
 
-with col2:
-    st.success("""
-⭐⭐⭐⭐⭐
-
-"Excelente atendimento.
-
-Voltarei a alugar."
-
-**Carla — Belo Horizonte**
-""")
-
-with col3:
-    st.success("""
-⭐⭐⭐⭐⭐
-
-"Melhor experiência que já tive."
-
-**Rafael — Campinas**
-""")
-
-# Dados dos carros organizados por marca
 marcas = {
     "Volkswagen": {
         "Gol": 79,
@@ -326,97 +325,160 @@ marcas = {
 }
 
 descricoes = {
-    "Gol": "Compacto, econômico e ideal para o dia a dia urbano. O Gol oferece agilidade e baixo consumo de combustível.",
-    "Renegade": "Robusto e estiloso, o Renegade é perfeito para quem busca aventura com conforto e segurança.",
-    "Onix": "Moderno e tecnológico, o Onix combina conectividade com excelente desempenho na estrada.",
-    "Argo": "Design arrojado e ótimo custo-benefício para quem busca versatilidade.",
-    "Hb20": "Elegante e eficiente, com ótimo espaço interno e conectividade."
+    "Gol": "Compacto, econômico e ideal para o dia a dia urbano. O Gol oferece excelente consumo de combustível e ótima dirigibilidade.",
+    "Renegade": "SUV confortável, espaçoso e robusto. Ideal para viagens e quem procura segurança.",
+    "Onix": "Tecnologia, conforto e economia em um único veículo. Excelente para cidade e estrada.",
+    "Argo": "Design moderno, ótimo espaço interno e excelente custo-benefício.",
+    "Hb20": "Elegante, econômico e equipado com recursos que tornam sua viagem mais confortável."
 }
 
-# 📞 Contato na barra lateral
-st.sidebar.image("AutoSeguro.png")
-st.sidebar.title("📱 Fale Conosco")
-st.sidebar.markdown('[WhatsApp](https://wa.me/5511998993067)')
+# ===========================
+# SIDEBAR
+# ===========================
 
-# 🚘 Escolha da marca e do veículo na sidebar
-marca_selecionada = st.sidebar.selectbox("Escolha a marca", list(marcas.keys()))
-modelos_da_marca = list(marcas[marca_selecionada].keys())
-modelo_selecionado = st.sidebar.selectbox("Escolha o modelo", modelos_da_marca)
+st.sidebar.image("AutoSeguro.png", use_container_width=True)
+
+st.sidebar.markdown("## 🚗 AutoSeguro")
+
+st.sidebar.caption("Sua próxima viagem começa aqui.")
+
+st.sidebar.divider()
+
+marca_selecionada = st.sidebar.selectbox(
+    "🚘 Marca",
+    list(marcas.keys())
+)
+
+modelo_selecionado = st.sidebar.selectbox(
+    "🚗 Modelo",
+    list(marcas[marca_selecionada].keys())
+)
 
 diaria = marcas[marca_selecionada][modelo_selecionado]
 
-# 🧾 Informações do aluguel
+st.sidebar.divider()
+
+st.sidebar.success("🛡 Seguro incluso")
+
+st.sidebar.success("🕒 Atendimento 24 horas")
+
+st.sidebar.success("🚘 Frota revisada")
+
+st.sidebar.divider()
+
+st.sidebar.markdown("### 📱 Atendimento")
+
+st.sidebar.markdown(
+    "[💬 WhatsApp](https://wa.me/5511998993067)"
+)
+
+# ===========================
+# RESERVA
+# ===========================
+
 st.markdown("---")
 
-st.markdown("""
-# 📋 Faça sua Reserva
+st.markdown("# 📋 Faça sua Reserva")
 
-Escolha o veículo, informe os dias de locação e a quilometragem estimada para visualizar o valor da reserva.
-""")
-st.header("📋 Detalhes do Aluguel")
-# Como a imagem está no formato 'Marca Modelo.png', monta o nome correto
-nome_arquivo_img = f"{marca_selecionada} {modelo_selecionado}.png"
-st.image(nome_arquivo_img)
-st.subheader(f"Modelo selecionado: {marca_selecionada} {modelo_selecionado}")
-st.markdown("Atenção ⚠️ — Após ler a descrição, preencha o tempo de aluguel e os Km's para obter o valor final.")
+st.write(
+    "Escolha o veículo e simule sua locação em poucos segundos."
+)
 
-# 📌 Descrição condicional
-if modelo_selecionado in descricoes:
-    st.markdown(f"📌 **Descrição:** {descricoes[modelo_selecionado]}")
+col_img, col_info = st.columns([1.2, 1])
 
-# 📥 Entrada de dados
+with col_img:
+
+    nome_arquivo_img = f"{marca_selecionada} {modelo_selecionado}.png"
+
+    st.image(nome_arquivo_img)
+
+with col_info:
+
+    st.subheader(f"{marca_selecionada} {modelo_selecionado}")
+
+    st.markdown(f"### 💰 R$ {diaria}/dia")
+
+    st.markdown("---")
+
+    st.write(descricoes.get(modelo_selecionado, ""))
+
+st.markdown("---")
+
 dias = st.number_input(
-    "📅 Quantos dias deseja permanecer com o veículo?",
+    "📅 Quantidade de dias",
     min_value=1,
     step=1
 )
+
 km = st.number_input(
     "🛣 Quilometragem prevista (km)",
     min_value=0.0,
-    step=0.1
+    step=1.0
 )
-# 🚗 Calcular Reserva
-st.markdown("🚗🚗🚗")
-if st.button("🚗 Calcular Reserva"):
-    with st.spinner("Calculando sua reserva..."):
+
+if st.button("🚗 Simular Reserva"):
+
+    with st.spinner("Calculando..."):
+
         time.sleep(1.5)
 
         total_dias = dias * diaria
+
         total_km = km * 0.15
+
         aluguel_total = total_dias + total_km
 
     st.success("Reserva simulada com sucesso!")
 
-    col1, col2 = st.columns(2)
+    st.markdown("## 📊 Resumo da Reserva")
 
-    with col1:
-        st.metric("🚘 Veículo", f"{marca_selecionada} {modelo_selecionado}")
-        st.metric("📅 Dias", dias)
-        st.metric("🛣 Quilômetros", f"{km:.1f}")
+    c1, c2, c3 = st.columns(3)
 
-    with col2:
-        st.metric("💵 Diárias", f"R$ {total_dias:.2f}")
-        st.metric("⛽ Quilometragem", f"R$ {total_km:.2f}")
-        st.metric("💰 Total", f"R$ {aluguel_total:.2f}")
+    with c1:
+        st.metric(
+            "🚘 Veículo",
+            modelo_selecionado
+        )
+
+    with c2:
+        st.metric(
+            "📅 Dias",
+            dias
+        )
+
+    with c3:
+        st.metric(
+            "🛣 Quilômetros",
+            f"{km:.0f}"
+        )
+
+    st.markdown("")
+
+    c1, c2, c3 = st.columns(3)
+
+    with c1:
+        st.metric(
+            "💵 Diárias",
+            f"R$ {total_dias:.2f}"
+        )
+
+    with c2:
+        st.metric(
+            "⛽ Quilometragem",
+            f"R$ {total_km:.2f}"
+        )
+
+    with c3:
+        st.metric(
+            "💰 Total",
+            f"R$ {aluguel_total:.2f}"
+        )
 
     st.balloons()
 
-    st.info("Obrigado por escolher a AutoSeguro. Esperamos fazer parte da sua próxima viagem! 🚗")
-col1, col2 = st.columns(2)
-
-with col1:
-    st.metric("🚘 Veículo", f"{marca_selecionada} {modelo_selecionado}")
-    st.metric("📅 Dias", dias)
-    st.metric("🛣 Quilômetros", f"{km:.1f}")
-
-with col2:
-    st.metric("💵 Diárias", f"R$ {total_dias:.2f}")
-    st.metric("⛽ Quilometragem", f"R$ {total_km:.2f}")
-    st.metric("💰 Total", f"R$ {aluguel_total:.2f}")
-
-st.balloons()
-
-st.info("Obrigado por escolher a AutoSeguro. Esperamos fazer parte da sua próxima viagem! 🚗")
+    st.info(
+        "Obrigado por escolher a AutoSeguro. Esperamos vê-lo novamente em breve! 🚗"
+    )
 
 # 📍 Rodapé
 st.markdown("""
