@@ -346,6 +346,13 @@ modelo_selecionado = st.sidebar.selectbox("Escolha o modelo", modelos_da_marca)
 diaria = marcas[marca_selecionada][modelo_selecionado]
 
 # 🧾 Informações do aluguel
+st.markdown("---")
+
+st.markdown("""
+# 📋 Faça sua Reserva
+
+Escolha o veículo, informe os dias de locação e a quilometragem estimada para visualizar o valor da reserva.
+""")
 st.header("📋 Detalhes do Aluguel")
 # Como a imagem está no formato 'Marca Modelo.png', monta o nome correto
 nome_arquivo_img = f"{marca_selecionada} {modelo_selecionado}.png"
@@ -358,21 +365,43 @@ if modelo_selecionado in descricoes:
     st.markdown(f"📌 **Descrição:** {descricoes[modelo_selecionado]}")
 
 # 📥 Entrada de dados
-dias = st.number_input("Quantidade de dias de aluguel", min_value=1, step=1)
-km = st.number_input("Quilometragem rodada (km)", min_value=0.0, step=0.1)
-
-# 💰 Cálculo do valor
+dias = st.number_input(
+    "📅 Quantos dias deseja permanecer com o veículo?",
+    min_value=1,
+    step=1
+)
+km = st.number_input(
+    "🛣 Quilometragem prevista (km)",
+    min_value=0.0,
+    step=0.1
+)
+# 🚗 Calcular Reserva
 st.markdown("🚗🚗🚗")
-if st.button("Calcular valor total"):
-    with st.spinner("Calculando..."):
-        time.sleep(1.5)
-        total_dias = dias * diaria
-        total_km = km * 0.15
-        aluguel_total = total_dias + total_km
+if st.button("🚗 Calcular Reserva"):
+    with st.spinner("Calculando sua reserva..."):
+    time.sleep(1.5)
 
-        st.success("✅ Cálculo concluído!")
-        st.info(f"Você alugou o {marca_selecionada} {modelo_selecionado} por {dias} dias e rodou {km:.1f} km.")
-        st.warning(f"💰 Valor total a pagar: R$ {aluguel_total:.2f}")
+    total_dias = dias * diaria
+    total_km = km * 0.15
+    aluguel_total = total_dias + total_km
+
+st.success("Reserva simulada com sucesso!")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.metric("🚘 Veículo", f"{marca_selecionada} {modelo_selecionado}")
+    st.metric("📅 Dias", dias)
+    st.metric("🛣 Quilômetros", f"{km:.1f}")
+
+with col2:
+    st.metric("💵 Diárias", f"R$ {total_dias:.2f}")
+    st.metric("⛽ Quilometragem", f"R$ {total_km:.2f}")
+    st.metric("💰 Total", f"R$ {aluguel_total:.2f}")
+
+st.balloons()
+
+st.info("Obrigado por escolher a AutoSeguro. Esperamos fazer parte da sua próxima viagem! 🚗")
 
 # 📍 Rodapé
 st.markdown("""
