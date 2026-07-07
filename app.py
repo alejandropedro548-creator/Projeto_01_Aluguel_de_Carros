@@ -143,6 +143,45 @@ Nossa frota é revisada constantemente para oferecer a melhor experiência em al
 
 </div>
 """, unsafe_allow_html=True)
+col1, col2, col3, col4 = st.columns(4)
+
+col1.metric(
+    "🚘 Veículos",
+    "120+"
+)
+
+col2.metric(
+    "😊 Clientes",
+    "2.500+"
+)
+
+col3.metric(
+    "⭐ Avaliação",
+    "4.9/5"
+)
+
+col4.metric(
+    "🛡 Seguro",
+    "Incluso"
+) 
+
+st.markdown("---")
+
+st.markdown(
+"""
+### Por que escolher a AutoSeguro?
+
+✅ Atendimento 24 horas
+
+✅ Veículos revisados
+
+✅ Reserva rápida
+
+✅ Seguro incluso
+
+✅ Atendimento sem burocracia
+"""
+)
 
 # 📸 Galeria de veículos
 col1, col2, col3, col4 = st.columns(4)
