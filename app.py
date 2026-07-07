@@ -379,14 +379,29 @@ km = st.number_input(
 st.markdown("🚗🚗🚗")
 if st.button("🚗 Calcular Reserva"):
     with st.spinner("Calculando sua reserva..."):
-    time.sleep(1.5)
+        time.sleep(1.5)
 
-    total_dias = dias * diaria
-    total_km = km * 0.15
-    aluguel_total = total_dias + total_km
+        total_dias = dias * diaria
+        total_km = km * 0.15
+        aluguel_total = total_dias + total_km
 
-st.success("Reserva simulada com sucesso!")
+    st.success("Reserva simulada com sucesso!")
 
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.metric("🚘 Veículo", f"{marca_selecionada} {modelo_selecionado}")
+        st.metric("📅 Dias", dias)
+        st.metric("🛣 Quilômetros", f"{km:.1f}")
+
+    with col2:
+        st.metric("💵 Diárias", f"R$ {total_dias:.2f}")
+        st.metric("⛽ Quilometragem", f"R$ {total_km:.2f}")
+        st.metric("💰 Total", f"R$ {aluguel_total:.2f}")
+
+    st.balloons()
+
+    st.info("Obrigado por escolher a AutoSeguro. Esperamos fazer parte da sua próxima viagem! 🚗")
 col1, col2 = st.columns(2)
 
 with col1:
