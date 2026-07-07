@@ -118,9 +118,31 @@ div[data-baseweb="notification"]{
 
 # 🏠 Cabeçalho
 st.title("🚗 Bem-vindo à AutoSeguro")
-st.markdown('<h3 style="color:green;">Sua jornada começa aqui!</h3>', unsafe_allow_html=True)
-st.write("Alugue o carro ideal com conforto, segurança e liberdade para ir além.")
-st.markdown("Essas são nossas opções no momento... 🚗🚗🚗")
+st.markdown("""
+<div style="background:rgba(255,255,255,0.08);
+padding:45px;
+border-radius:22px;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.15);
+margin-bottom:35px;">
+
+<h1 style="font-size:55px;color:white;margin-bottom:10px;">
+🚗 AutoSeguro
+</h1>
+
+<h3 style="color:#37D67A;">
+Alugue o carro ideal para qualquer destino.
+</h3>
+
+<p style="font-size:20px;color:white;line-height:1.8;">
+
+Viaje com conforto, segurança e total liberdade.
+Nossa frota é revisada constantemente para oferecer a melhor experiência em aluguel de veículos.
+
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 
 # 📸 Galeria de veículos
 col1, col2, col3, col4 = st.columns(4)
