@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚗 Mateus Motors - Sistema de Aluguel de Carros
+# 🚗 - Sistema de Aluguel de Carros
 
 ### 💰 Projeto: Calculadora de Custos de Aluguel de Veículos
 
