@@ -3,14 +3,117 @@ import time
 
 # 🎨 Estilo de fundo
 st.markdown("""
-    <style>
-    .stApp {
-        background-image: url("https://images.unsplash.com/photo-1605559424843-8f9b8e7c7e4f");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    </style>
+<style>
+
+/* Fundo da aplicação */
+.stApp{
+    background:
+        linear-gradient(rgba(10,20,25,0.82), rgba(10,20,25,0.82)),
+        url("https://images.unsplash.com/photo-1605559424843-8f9b8e7c7e4f");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Fonte */
+html, body, [class*="css"]{
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Títulos */
+h1{
+    color:#FFFFFF;
+    font-size:48px;
+    font-weight:800;
+}
+
+h2{
+    color:white;
+}
+
+h3{
+    color:#18C964;
+}
+
+/* Texto */
+p{
+    color:#F2F2F2;
+    font-size:17px;
+}
+
+/* Botões */
+.stButton>button{
+
+    width:100%;
+    border-radius:12px;
+
+    background:#00B050;
+
+    color:white;
+
+    border:none;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    padding:12px;
+
+    transition:0.3s;
+}
+
+.stButton>button:hover{
+
+    background:#009944;
+
+    transform:scale(1.03);
+
+    box-shadow:0px 8px 20px rgba(0,176,80,.35);
+
+}
+
+/* Inputs */
+
+.stNumberInput,
+.stSelectbox{
+
+    background:white;
+
+    border-radius:10px;
+
+}
+
+/* Sidebar */
+
+section[data-testid="stSidebar"]{
+
+    background:#0D1117;
+
+}
+
+section[data-testid="stSidebar"] *{
+
+    color:white;
+
+}
+
+/* Imagens */
+
+img{
+
+    border-radius:18px;
+
+}
+
+/* Alertas */
+
+div[data-baseweb="notification"]{
+
+    border-radius:15px;
+
+}
+
+</style>
 """, unsafe_allow_html=True)
 
 # 🏠 Cabeçalho
