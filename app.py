@@ -18,85 +18,688 @@ st.set_page_config(
 
 st.markdown("""
 <style>
+/* ===========================
+   AUTOSEGURO PREMIUM THEME
+   PARTE 1 - BASE VISUAL
+=========================== */
+
+
+/* Fonte geral */
 
 html, body, [class*="css"]{
-    font-family: "Segoe UI", sans-serif;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
 }
+
+
+/* Fundo principal */
 
 .stApp{
+
     background:
-        linear-gradient(rgba(8,15,20,.84), rgba(8,15,20,.84)),
-        url("https://images.unsplash.com/photo-1605559424843-8f9b8e7c7e4f");
-    background-size:cover;
+    linear-gradient(
+        rgba(5,12,18,0.88),
+        rgba(5,12,18,0.88)
+    ),
+    url("https://images.unsplash.com/photo-1605559424843-8f9b8e7c7e4f");
+
+    background-size: cover;
+
     background-position:center;
+
     background-attachment:fixed;
+
 }
 
-/* Sidebar */
+
+/* Remove espaço excessivo superior */
+
+.block-container{
+
+    padding-top:2rem;
+
+    padding-bottom:3rem;
+
+    max-width:1200px;
+
+}
+
+
+/* Textos */
+
+p{
+
+    color:#E6E6E6;
+
+    font-size:17px;
+
+    line-height:1.6;
+
+}
+
+
+/* Títulos */
+
+h1{
+
+    color:white !important;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+
+}
+
+
+h2{
+
+    color:white !important;
+
+    font-weight:700;
+
+}
+
+
+h3{
+
+    color:#38D97A !important;
+
+    font-weight:700;
+
+}
+
+
+/* Linha divisória */
+
+hr{
+
+    border:0;
+
+    height:1px;
+
+    background:
+    rgba(255,255,255,0.15);
+
+    margin:35px 0;
+
+}
+
+
+/* ===========================
+   SIDEBAR PREMIUM
+=========================== */
+
 
 section[data-testid="stSidebar"]{
-    background:#0d1117;
-    border-right:1px solid rgba(255,255,255,.10);
+
+    background:
+    linear-gradient(
+        180deg,
+        #08131A,
+        #101820
+    );
+
 }
 
-/* Botões */
+
+section[data-testid="stSidebar"] *{
+
+    color:white !important;
+
+}
+
+
+section[data-testid="stSidebar"] img{
+
+    border-radius:20px;
+
+    margin-bottom:15px;
+
+}
+
+
+/* Selectbox sidebar */
+
+section[data-testid="stSidebar"] div[data-baseweb="select"]{
+
+    border-radius:12px;
+
+}
+
+
+/* ===========================
+   BOTÕES PREMIUM
+=========================== */
+
 
 .stButton>button{
 
     width:100%;
-    background:linear-gradient(90deg,#00B050,#00C853);
 
-    color:white;
+    height:55px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #00B050,
+        #00D060
+    );
+
+
+    color:white !important;
 
     border:none;
 
-    border-radius:12px;
+    border-radius:15px;
 
-    padding:14px;
+    font-size:18px;
 
-    font-weight:700;
+    font-weight:800;
 
-    transition:.3s;
+    transition:all .3s ease;
+
 }
+
 
 .stButton>button:hover{
 
-    transform:translateY(-2px);
+    transform:
+    translateY(-3px);
 
-    box-shadow:0 10px 25px rgba(0,176,80,.35);
+    box-shadow:
+    0 12px 30px
+    rgba(0,208,96,.35);
 
 }
 
-/* Imagens */
+
+/* ===========================
+   IMAGENS
+=========================== */
+
 
 img{
 
-    border-radius:18px;
+    border-radius:22px;
 
 }
 
-/* Métricas */
+
+/* ===========================
+   MÉTRICAS
+=========================== */
+
 
 div[data-testid="metric-container"]{
 
-    background:rgba(255,255,255,.08);
+    background:
+    rgba(255,255,255,0.08);
 
-    border-radius:15px;
+    border:
 
-    padding:15px;
+    1px solid
+    rgba(255,255,255,0.12);
 
-    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    backdrop-filter:blur(10px);
+
+    transition:.3s;
 
 }
 
-/* Alertas */
 
-div[data-baseweb="notification"]{
+div[data-testid="metric-container"]:hover{
+
+    transform:translateY(-5px);
+
+    background:
+    rgba(255,255,255,0.12);
+
+}
+/* ===========================
+   PARTE 2 - COMPONENTES PREMIUM
+=========================== */
+
+
+/* ===========================
+   CAIXAS DE TEXTO / INPUTS
+=========================== */
+
+
+div[data-baseweb="input"] input{
+
+    border-radius:14px !important;
+
+    background:#ffffff !important;
+
+    color:#111 !important;
+
+    font-size:16px;
+
+}
+
+
+div[data-baseweb="input"]{
 
     border-radius:14px;
 
 }
 
+
+
+/* Selectbox */
+
+div[data-baseweb="select"] > div{
+
+    border-radius:14px !important;
+
+}
+
+
+
+/* ===========================
+   CARDS DE VEÍCULOS
+=========================== */
+
+
+/* Blocos de markdown */
+
+div[data-testid="stMarkdownContainer"]{
+
+    transition:.3s ease;
+
+}
+
+
+
+/* Efeito visual nas seções */
+
+div[data-testid="stMarkdownContainer"] h3{
+
+    margin-top:10px;
+
+}
+
+
+/* ===========================
+   ALERTAS E MENSAGENS
+=========================== */
+
+
+div[data-baseweb="notification"]{
+
+    border-radius:18px !important;
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+
+
+/* Sucesso */
+
+div[data-baseweb="notification"][kind="success"]{
+
+    background:
+    rgba(0,176,80,.15);
+
+}
+
+
+
+/* ===========================
+   IMAGEM DO VEÍCULO SELECIONADO
+=========================== */
+
+
+.stImage{
+
+    transition:.4s ease;
+
+}
+
+
+.stImage:hover{
+
+    transform:scale(1.02);
+
+}
+
+
+
+/* ===========================
+   SEÇÃO DE RESERVA
+=========================== */
+
+
+/* Texto da descrição */
+
+div[data-testid="stMarkdownContainer"] p{
+
+    color:#E8E8E8;
+
+}
+
+
+
+/* ===========================
+   DIVISORES
+=========================== */
+
+
+[data-testid="stDivider"]{
+
+    opacity:.3;
+
+}
+
+
+
+/* ===========================
+   MÉTRICAS DO RESUMO
+=========================== */
+
+
+div[data-testid="metric-container"] label{
+
+    color:#CFCFCF !important;
+
+    font-size:14px;
+
+}
+
+
+div[data-testid="metric-container"] [data-testid="stMetricValue"]{
+
+    color:#38D97A !important;
+
+    font-size:28px;
+
+    font-weight:800;
+
+}
+
+
+
+/* ===========================
+   BOTÃO DE RESERVA
+=========================== */
+
+
+button[kind="primary"]{
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #00B050,
+        #00E676
+    ) !important;
+
+}
+
+
+
+/* ===========================
+   RODAPÉ
+=========================== */
+
+
+footer{
+    visibility:hidden;
+}
+
+# Esconde apenas a marca do Streamlit
+[data-testid="stToolbar"]{
+    visibility:hidden;
+}
+/* ===========================
+   PARTE 3 - ACABAMENTO FINAL
+=========================== */
+
+
+/* ===========================
+   EFEITO GLASS NOS BLOCOS
+=========================== */
+
+
+div[data-testid="stVerticalBlock"] > div{
+
+    border-radius:20px;
+
+}
+
+
+
+/* ===========================
+   CARDS DE INFORMAÇÃO
+=========================== */
+
+
+div[data-testid="stMarkdownContainer"]{
+
+    animation: aparecer .5s ease;
+
+}
+
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* ===========================
+   DEPPOIMENTOS
+=========================== */
+
+
+div[data-baseweb="notification"] p{
+
+    font-size:16px;
+
+    line-height:1.7;
+
+}
+
+
+
+/* ===========================
+   DESTAQUE DO VALOR TOTAL
+=========================== */
+
+
+div[data-testid="metric-container"]{
+
+    box-shadow:
+
+    0 8px 25px
+
+    rgba(0,0,0,.25);
+
+}
+
+
+
+/* ===========================
+   IMAGENS DOS VEÍCULOS
+=========================== */
+
+
+.stImage img{
+
+    object-fit:cover;
+
+    transition:.4s ease;
+
+}
+
+
+.stImage img:hover{
+
+    transform:
+
+    scale(1.04);
+
+    box-shadow:
+
+    0 15px 35px
+
+    rgba(0,0,0,.45);
+
+}
+
+
+
+/* ===========================
+   TÍTULO PRINCIPAL
+=========================== */
+
+
+h1{
+
+    text-shadow:
+
+    0 5px 20px
+
+    rgba(0,0,0,.5);
+
+}
+
+
+
+/* ===========================
+   TEXTO VERDE DE DESTAQUE
+=========================== */
+
+
+h3{
+
+    text-shadow:
+
+    0 0 15px
+
+    rgba(56,217,122,.35);
+
+}
+
+
+
+/* ===========================
+   BOTÕES COM EFEITO PREMIUM
+=========================== */
+
+
+.stButton button:active{
+
+    transform:scale(.97);
+
+}
+
+
+
+/* ===========================
+   INPUTS DE RESERVA
+=========================== */
+
+
+div[data-baseweb="input"]{
+
+    box-shadow:
+
+    0 5px 15px
+
+    rgba(0,0,0,.15);
+
+}
+
+
+
+/* ===========================
+   SELECTBOX PREMIUM
+=========================== */
+
+
+div[data-baseweb="select"]{
+
+    box-shadow:
+
+    0 5px 15px
+
+    rgba(0,0,0,.15);
+
+}
+
+
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+
+
+@media(max-width:768px){
+
+    h1{
+
+        font-size:36px !important;
+
+    }
+
+
+    p{
+
+        font-size:15px;
+
+    }
+
+}
+
+
+
+/* ===========================
+   IDENTIDADE AUTOSEGURO
+=========================== */
+
+
+.stMarkdown strong{
+
+    color:#38D97A;
+
+}
+
+
+/* Espaçamento final */
+
+.block-container{
+
+    padding-left:3rem;
+
+    padding-right:3rem;
+
+}
 </style>
 """, unsafe_allow_html=True)
 
